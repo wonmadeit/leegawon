@@ -89,7 +89,7 @@ void CarControlCallback(const geometry_msgs::Twist& msg)
 {
   //ROS_INFO("I heard: [%s]", msg->data.c_str());
   
-   steering_angle = (int)(msg.angular.z+NEUTRAL_ANGLE) ; // gwlee original steering angle 85
+   steering_angle = (int)(msg.angular.z+NEUTRAL_ANGLE) ; // original steering angle 85
    
    if(steering_angle >= 50+NEUTRAL_ANGLE)  steering_angle = NEUTRAL_ANGLE+50;
    if(steering_angle <=-50+NEUTRAL_ANGLE)  steering_angle = NEUTRAL_ANGLE-50;
@@ -301,14 +301,14 @@ int main(int argc, char **argv)
      }
     else
     {
-        if (steering_angle >= 83 && steering_angle <= 87) //tung 0501 speed threshold added
+        if (steering_angle >= 83 && steering_angle <= 87) //0501 speed threshold added
 			motor_speed = 1.5 * Base_Speed;
 		else
 		{
 			float scale = 1.5 - std::abs(steering_angle - 85) / 30;
 			if (scale < 1) scale = 1;
 			//motor_speed = scale * Base_Speed;
-      motor_speed = 80;      //gwlee 0501 
+      motor_speed = 80;      //0501 
 		}	
         
     } 
